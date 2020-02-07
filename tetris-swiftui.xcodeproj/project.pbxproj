@@ -16,6 +16,7 @@
 		E2628B7023ED67E3004D4D9F /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B6F23ED67E3004D4D9F /* TetrisGameViewModel.swift */; };
 		E2628B7323ED697B004D4D9F /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7223ED697B004D4D9F /* Color+Custom.swift */; };
 		E2628B7823ED6A99004D4D9F /* TetrisGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */; };
+		E2628B7A23EDA664004D4D9F /* TetrisGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7923EDA664004D4D9F /* TetrisGameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E2628B6F23ED67E3004D4D9F /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
 		E2628B7223ED697B004D4D9F /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 		E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameView.swift; sourceTree = "<group>"; };
+		E2628B7923EDA664004D4D9F /* TetrisGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		E24C4B1323ED65830055F589 /* tetris-swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				E2628B7B23EDA67C004D4D9F /* Model */,
 				E2628B7423ED6A6E004D4D9F /* View */,
 				E2628B7123ED696D004D4D9F /* Extension */,
 				E2628B6E23ED67C1004D4D9F /* ViewModel */,
@@ -106,6 +109,14 @@
 				E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E2628B7B23EDA67C004D4D9F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2628B7923EDA664004D4D9F /* TetrisGameModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2628B7A23EDA664004D4D9F /* TetrisGameModel.swift in Sources */,
 				E24C4B1523ED65830055F589 /* AppDelegate.swift in Sources */,
 				E2628B7823ED6A99004D4D9F /* TetrisGameView.swift in Sources */,
 				E2628B7023ED67E3004D4D9F /* TetrisGameViewModel.swift in Sources */,
