@@ -14,7 +14,7 @@
 		E24C4B1E23ED65860055F589 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24C4B1D23ED65860055F589 /* Preview Assets.xcassets */; };
 		E24C4B2123ED65860055F589 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24C4B1F23ED65860055F589 /* LaunchScreen.storyboard */; };
 		E2628B7023ED67E3004D4D9F /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B6F23ED67E3004D4D9F /* TetrisGameViewModel.swift */; };
-		E2628B7323ED697B004D4D9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7223ED697B004D4D9F /* Color.swift */; };
+		E2628B7323ED697B004D4D9F /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7223ED697B004D4D9F /* Color+Custom.swift */; };
 		E2628B7823ED6A99004D4D9F /* TetrisGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		E24C4B2023ED65860055F589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E24C4B2223ED65860055F589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2628B6F23ED67E3004D4D9F /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
-		E2628B7223ED697B004D4D9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E2628B7223ED697B004D4D9F /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 		E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +95,7 @@
 		E2628B7123ED696D004D4D9F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E2628B7223ED697B004D4D9F /* Color.swift */,
+				E2628B7223ED697B004D4D9F /* Color+Custom.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 				E2628B7823ED6A99004D4D9F /* TetrisGameView.swift in Sources */,
 				E2628B7023ED67E3004D4D9F /* TetrisGameViewModel.swift in Sources */,
 				E24C4B1723ED65830055F589 /* SceneDelegate.swift in Sources */,
-				E2628B7323ED697B004D4D9F /* Color.swift in Sources */,
+				E2628B7323ED697B004D4D9F /* Color+Custom.swift in Sources */,
 				E24C4B1923ED65830055F589 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

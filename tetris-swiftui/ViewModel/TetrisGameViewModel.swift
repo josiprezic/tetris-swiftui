@@ -10,28 +10,40 @@ import SwiftUI
 
 class TetrisGameViewModel: ObservableObject {
     
-    var numRows: Int
-    var numColumns: Int
+    //
+    // MARK: - Properties
+    //
+    
     @Published var gameBoard: [[TetrisGameSquare]]
+    
+    let numRows: Int
+    let numColumns: Int
+    
+    //
+    // MARK: - Initializers
+    //
     
     init(numRows: Int = 23, numColumns: Int = 10) {
         self.numRows = numRows
         self.numColumns = numColumns
         
-        gameBoard = Array(repeating: Array(repeating: TetrisGameSquare(color: .tetrisBlack), count: numRows), count: numColumns)
+        let repeatingSquare = TetrisGameSquare(color: .tetrisBlack)
+        let rowSquareArray = Array(repeating: repeatingSquare, count: numRows)
+        gameBoard = Array(repeating: rowSquareArray, count: numColumns)
     }
+    
+    //
+    // MARK: - Methods
+    //
     
     func squareClicked(row: Int, column: Int) {
         debugPrint("Column: \(column), Row: \(row)")
-        if gameBoard[column][row].color == .tetrisBlack {
-            gameBoard[column][row].color = .tetrisRed
-        } else {
-            gameBoard[column][row].color = .tetrisBlack
-        }
+        let currentSquareColor = gameBoard[column][row].color
+        gameBoard[column][row].color = currentSquareColor == .tetrisBlack ? .tetrisRed : .tetrisBlack
     }
 }
 
-
+// TODO: JR Move
 struct TetrisGameSquare {
     var color: Color
 }
