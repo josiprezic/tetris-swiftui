@@ -64,16 +64,10 @@
 		E24C4B1323ED65830055F589 /* tetris-swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				E2E2E67523F6D01E006A26B3 /* SupportingFiles */,
 				E2628B7B23EDA67C004D4D9F /* Model */,
 				E2628B7423ED6A6E004D4D9F /* View */,
-				E2628B7123ED696D004D4D9F /* Extension */,
 				E2628B6E23ED67C1004D4D9F /* ViewModel */,
-				E24C4B1423ED65830055F589 /* AppDelegate.swift */,
-				E24C4B1623ED65830055F589 /* SceneDelegate.swift */,
-				E24C4B1823ED65830055F589 /* ContentView.swift */,
-				E24C4B1A23ED65860055F589 /* Assets.xcassets */,
-				E24C4B1F23ED65860055F589 /* LaunchScreen.storyboard */,
-				E24C4B2223ED65860055F589 /* Info.plist */,
 				E24C4B1C23ED65860055F589 /* Preview Content */,
 			);
 			path = "tetris-swiftui";
@@ -106,6 +100,7 @@
 		E2628B7423ED6A6E004D4D9F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E24C4B1823ED65830055F589 /* ContentView.swift */,
 				E2628B7723ED6A99004D4D9F /* TetrisGameView.swift */,
 			);
 			path = View;
@@ -117,6 +112,19 @@
 				E2628B7923EDA664004D4D9F /* TetrisGameModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E2E2E67523F6D01E006A26B3 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E24C4B1423ED65830055F589 /* AppDelegate.swift */,
+				E24C4B1623ED65830055F589 /* SceneDelegate.swift */,
+				E24C4B1F23ED65860055F589 /* LaunchScreen.storyboard */,
+				E24C4B2223ED65860055F589 /* Info.plist */,
+				E24C4B1A23ED65860055F589 /* Assets.xcassets */,
+				E2628B7123ED696D004D4D9F /* Extension */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,7 +344,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "tetris-swiftui/Info.plist";
+				INFOPLIST_FILE = "tetris-swiftui/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,7 +364,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "tetris-swiftui/Info.plist";
+				INFOPLIST_FILE = "tetris-swiftui/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
