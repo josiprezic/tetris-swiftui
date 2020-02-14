@@ -22,6 +22,17 @@ class TetrisGameModel: ObservableObject {
     private var timer: Timer?
     private var speed: Double
     
+    var shadow: Tetromino? {
+        guard var lastShadow = tetromino else { return nil }
+        var testShadow = lastShadow
+        while isValidTetromino(testTetromino: testShadow) {
+            lastShadow = testShadow
+            testShadow = lastShadow.moveBy(row: -1, column: 0)
+        }
+        
+        return lastShadow
+    }
+    
     let numRows: Int
     let numColumns: Int
     
