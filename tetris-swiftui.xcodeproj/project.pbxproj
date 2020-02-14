@@ -76,7 +76,6 @@
 				E2628B7B23EDA67C004D4D9F /* Model */,
 				E2628B7423ED6A6E004D4D9F /* View */,
 				E2628B6E23ED67C1004D4D9F /* ViewModel */,
-				E24C4B1C23ED65860055F589 /* Preview Content */,
 			);
 			path = "tetris-swiftui";
 			sourceTree = "<group>";
@@ -129,6 +128,7 @@
 		E2E2E67523F6D01E006A26B3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E24C4B1C23ED65860055F589 /* Preview Content */,
 				E24C4B1423ED65830055F589 /* AppDelegate.swift */,
 				E24C4B1623ED65830055F589 /* SceneDelegate.swift */,
 				E24C4B1F23ED65860055F589 /* LaunchScreen.storyboard */,
@@ -357,7 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "tetris-swiftui/SupportingFiles/Info.plist";
@@ -377,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"tetris-swiftui/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "tetris-swiftui/SupportingFiles/Info.plist";
