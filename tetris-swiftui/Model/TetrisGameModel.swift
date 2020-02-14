@@ -36,8 +36,7 @@ class TetrisGameModel: ObservableObject {
         let block: TetrisGameBlock? = nil
         let rowSquareArray = Array(repeating: block, count: numRows)
         gameBoard = Array(repeating: rowSquareArray, count: numColumns)
-        // tetromino = Tetromino(origin: BlockLocation(row: 22, column: 4), blockType: .i)
-        speed = 0.1
+        speed = 0.5
         resumeGame()
     }
     
@@ -50,6 +49,22 @@ class TetrisGameModel: ObservableObject {
         if gameBoard[column][row] == nil {
             gameBoard[column][row] = TetrisGameBlock(blockType: BlockType.allCases.randomElement()!)
         }
+    }
+    
+    func moveTetrominoDown() -> Bool {
+        return moveTetromino(rowOffset: -1, columnOffset: 0)
+    }
+    
+    func moveTetrominoLeft() -> Bool {
+        return moveTetromino(rowOffset: 0, columnOffset: -1)
+    }
+    
+    func moveTetrominoRight() -> Bool {
+        return moveTetromino(rowOffset: 0, columnOffset: 1)
+    }
+    
+    func dropTetromino() {
+        while moveTetrominoDown() { }
     }
     
     //
@@ -66,8 +81,14 @@ class TetrisGameModel: ObservableObject {
     }
     
     private func runEngine(timer: Timer) {
+        // Check if we need to clear a line
+        if clearLines() {
+            print("Line cleared")
+            return
+        }
+        
         // Spawn a new block if we need to
-        guard let currentTetromino = tetromino else {
+        guard tetromino != nil else {
             debugPrint("Spawning new tetromino")
             tetromino = Tetromino.createNewTetromino(numRows: numRows, numColumns: numColumns)
             if !isValidTetromino(testTetromino: tetromino!) {
@@ -78,16 +99,25 @@ class TetrisGameModel: ObservableObject {
         }
         
         // See about moving block down
-        let newTetromino = currentTetromino.moveBy(row: -1, column: 0)
-        if isValidTetromino(testTetromino: newTetromino) {
+        if moveTetrominoDown() {
             print("Moving tetromino down")
-            tetromino = newTetromino
             return
         }
         
         // See if we need to place the block
         print("Placing tetromino")
         placeTetromino()
+    }
+    
+    private func moveTetromino(rowOffset: Int, columnOffset: Int) -> Bool {
+        guard let currentTetromino = tetromino else { return false }
+        
+        let newTetromino = currentTetromino.moveBy(row: rowOffset, column: columnOffset)
+        if isValidTetromino(testTetromino: newTetromino) {
+            tetromino = newTetromino
+            return true
+        }
+        return false
     }
     
     private func isValidTetromino(testTetromino: Tetromino) -> Bool {
@@ -119,6 +149,36 @@ class TetrisGameModel: ObservableObject {
         }
         
         tetromino = nil
+    }
+    
+    private func clearLines() -> Bool {
+        let block: TetrisGameBlock? = nil
+        let rowSquareArray = Array(repeating: block, count: numRows)
+        var newBoard = Array(repeating: rowSquareArray, count: numColumns)
+        
+        var boardUpdated = false
+        var nextRowToCopy = 0
+        
+        for row in 0...numRows - 1 {
+            var clearLine = true
+            for column in 0...numColumns - 1 {
+                clearLine = clearLine && gameBoard[column][row] != nil
+            }
+            
+            if !clearLine {
+                for column in 0...numColumns - 1 {
+                    newBoard[column][nextRowToCopy] = gameBoard[column][row]
+                }
+                nextRowToCopy += 1
+            }
+            boardUpdated = boardUpdated || clearLine
+            
+        }
+        
+        if boardUpdated {
+            gameBoard = newBoard
+        }
+        return boardUpdated
     }
 }
 

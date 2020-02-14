@@ -39,6 +39,7 @@ final class TetrisGameViewModel: ObservableObject {
     }
     
     var anyCancellable: AnyCancellable?
+    var lastMoveLocation: CGPoint?
     
     //
     // MARK: - Initializers
@@ -51,16 +52,11 @@ final class TetrisGameViewModel: ObservableObject {
     }
     
     //
-    // MARK: - Methods
+    // MARK: - Public methods
     //
     
     func squareClicked(row: Int, column: Int) {
         tetrisGameModel.blockClicked(row: row, column: column)
-    }
-    
-    func convertToSquare(block: TetrisGameBlock?) -> TetrisGameSquare {
-        let squareColor = getColor(blockType: block?.blockType)
-        return TetrisGameSquare(color: squareColor)
     }
     
     func getColor(blockType: BlockType?) -> Color {
@@ -74,6 +70,64 @@ final class TetrisGameViewModel: ObservableObject {
         case .z: return .tetrisRed
         case .none: return .tetrisBlack
         }
+    }
+    
+    func getMoveGesture() -> some Gesture {
+        return DragGesture()
+        .onChanged(onMoveChanged(value:))
+        .onEnded(onMoveEnded(_:))
+    }
+    
+    //
+    // MARK: - Private methods
+    //
+    
+    private func convertToSquare(block: TetrisGameBlock?) -> TetrisGameSquare {
+        let squareColor = getColor(blockType: block?.blockType)
+        return TetrisGameSquare(color: squareColor)
+    }
+    
+    private func onMoveChanged(value: DragGesture.Value) {
+        guard let start = lastMoveLocation else {
+            lastMoveLocation = value.location
+            return
+        }
+        
+        let xDiff = value.location.x - start.x
+        
+        if xDiff > 10 {
+            debugPrint("Moving right")
+            let _ = tetrisGameModel.moveTetrominoRight()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        if xDiff < -10 {
+            debugPrint("Moving left")
+            let _ = tetrisGameModel.moveTetrominoLeft()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        let yDiff = value.location.y - start.y
+        
+        if yDiff > 10 {
+            debugPrint("Moving down")
+            let _ = tetrisGameModel.moveTetrominoDown()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        if yDiff < -10 {
+            debugPrint("Dropping")
+            tetrisGameModel.dropTetromino()
+            lastMoveLocation = value.location
+            return
+        }
+    }
+    
+    private func onMoveEnded(_: DragGesture.Value) {
+        lastMoveLocation = nil
     }
 }
 
