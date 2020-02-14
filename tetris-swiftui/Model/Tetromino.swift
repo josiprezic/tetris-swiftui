@@ -16,19 +16,11 @@ struct Tetromino {
     
     var origin: BlockLocation
     var blockType: BlockType
-    
-    var blocks: [BlockLocation] {
-        return Tetromino.getBlocks(blockType: blockType)
-    }
+    var blocks: [BlockLocation] { return Tetromino.getBlocks(blockType: blockType) }
     
     //
-    // MARK: - Public methods
+    // MARK: - Static methods
     //
-    
-    func moveBy(row: Int, column: Int) -> Tetromino {
-        let newOrigin = BlockLocation(row: origin.row + row, column: origin.column + column)
-        return Tetromino(origin: newOrigin, blockType: blockType)
-    }
     
     static func createNewTetromino(numRows: Int, numColumns: Int) -> Tetromino {
         let blockType = BlockType.allCases.randomElement()!
@@ -40,6 +32,15 @@ struct Tetromino {
         
         let origin = BlockLocation(row: numRows - 1 - maxRow, column: (numColumns - 1) / 2)
         return Tetromino(origin: origin, blockType: blockType)
+    }
+    
+    //
+    // MARK: - Public methods
+    //
+    
+    func moveBy(row: Int, column: Int) -> Tetromino {
+        let newOrigin = BlockLocation(row: origin.row + row, column: origin.column + column)
+        return Tetromino(origin: newOrigin, blockType: blockType)
     }
     
     //

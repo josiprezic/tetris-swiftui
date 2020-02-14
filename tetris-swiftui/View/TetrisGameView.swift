@@ -57,6 +57,10 @@ struct TetrisGameView: View {
     }
 }
 
+//
+// MARK: - Preview
+//
+
 struct TetrisGameView_Previews: PreviewProvider {
     static var previews: some View {
         TetrisGameView()

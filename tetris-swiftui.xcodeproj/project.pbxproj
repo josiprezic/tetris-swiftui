@@ -20,6 +20,7 @@
 		E2E2E67723F6D192006A26B3 /* Tetromino.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2E67623F6D192006A26B3 /* Tetromino.swift */; };
 		E2E2E67923F6D1F1006A26B3 /* BlockLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2E67823F6D1F1006A26B3 /* BlockLocation.swift */; };
 		E2E2E67B23F6D20E006A26B3 /* TetrisGameBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2E67A23F6D20E006A26B3 /* TetrisGameBlock.swift */; };
+		E2E2E67D23F6D3A7006A26B3 /* TetrisGameSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2E67C23F6D3A7006A26B3 /* TetrisGameSquare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E2E2E67623F6D192006A26B3 /* Tetromino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetromino.swift; sourceTree = "<group>"; };
 		E2E2E67823F6D1F1006A26B3 /* BlockLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLocation.swift; sourceTree = "<group>"; };
 		E2E2E67A23F6D20E006A26B3 /* TetrisGameBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameBlock.swift; sourceTree = "<group>"; };
+		E2E2E67C23F6D3A7006A26B3 /* TetrisGameSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisGameSquare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				E2E2E67623F6D192006A26B3 /* Tetromino.swift */,
 				E2E2E67823F6D1F1006A26B3 /* BlockLocation.swift */,
 				E2E2E67A23F6D20E006A26B3 /* TetrisGameBlock.swift */,
+				E2E2E67C23F6D3A7006A26B3 /* TetrisGameSquare.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				E2E2E67B23F6D20E006A26B3 /* TetrisGameBlock.swift in Sources */,
 				E2628B7023ED67E3004D4D9F /* TetrisGameViewModel.swift in Sources */,
 				E24C4B1723ED65830055F589 /* SceneDelegate.swift in Sources */,
+				E2E2E67D23F6D3A7006A26B3 /* TetrisGameSquare.swift in Sources */,
 				E2628B7323ED697B004D4D9F /* Color+Custom.swift in Sources */,
 				E24C4B1923ED65830055F589 /* ContentView.swift in Sources */,
 				E2E2E67923F6D1F1006A26B3 /* BlockLocation.swift in Sources */,

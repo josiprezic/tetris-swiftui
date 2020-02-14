@@ -17,6 +17,9 @@ final class TetrisGameViewModel: ObservableObject {
     
     @Published var tetrisGameModel = TetrisGameModel()
     
+    var anyCancellable: AnyCancellable?
+    var lastMoveLocation: CGPoint?
+    
     var numRows: Int {
         tetrisGameModel.numRows
     }
@@ -46,9 +49,6 @@ final class TetrisGameViewModel: ObservableObject {
         
         return board
     }
-    
-    var anyCancellable: AnyCancellable?
-    var lastMoveLocation: CGPoint?
     
     //
     // MARK: - Initializers
@@ -151,9 +151,4 @@ final class TetrisGameViewModel: ObservableObject {
     private func onMoveEnded(_: DragGesture.Value) {
         lastMoveLocation = nil
     }
-}
-
-// TODO: JR Move
-struct TetrisGameSquare {
-    var color: Color
 }

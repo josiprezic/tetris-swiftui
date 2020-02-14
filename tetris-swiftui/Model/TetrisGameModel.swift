@@ -7,10 +7,9 @@
 //  Copyright © 2020 Josip Rezic. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
-class TetrisGameModel: ObservableObject {
+final class TetrisGameModel: ObservableObject {
     
     //
     // MARK: - Properties

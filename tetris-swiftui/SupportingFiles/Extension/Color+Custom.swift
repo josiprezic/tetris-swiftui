@@ -9,6 +9,7 @@
 import SwiftUI
 
 extension Color {
+    
     static let tetrisBlack = Color(red: 0/255, green: 0/255, blue: 0/255)
     static let tetrisRed = Color(red: 255/255, green: 16/255, blue: 60/255)
     static let tetrisLightBlue = Color(red: 0/255, green: 230/255, blue: 254/255)
