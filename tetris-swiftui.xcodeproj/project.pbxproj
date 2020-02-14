@@ -72,10 +72,10 @@
 		E24C4B1323ED65830055F589 /* tetris-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				E2E2E67523F6D01E006A26B3 /* SupportingFiles */,
-				E2628B7B23EDA67C004D4D9F /* Model */,
 				E2628B7423ED6A6E004D4D9F /* View */,
+				E2628B7B23EDA67C004D4D9F /* Model */,
 				E2628B6E23ED67C1004D4D9F /* ViewModel */,
+				E2E2E67523F6D01E006A26B3 /* SupportingFiles */,
 			);
 			path = "tetris-swiftui";
 			sourceTree = "<group>";
