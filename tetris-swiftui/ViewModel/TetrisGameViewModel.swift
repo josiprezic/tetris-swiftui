@@ -17,6 +17,9 @@ final class TetrisGameViewModel: ObservableObject {
     
     @Published var tetrisGameModel = TetrisGameModel()
     
+    var anyCancellable: AnyCancellable?
+    var lastMoveLocation: CGPoint?
+    
     var numRows: Int {
         tetrisGameModel.numRows
     }
@@ -28,6 +31,14 @@ final class TetrisGameViewModel: ObservableObject {
     var gameBoard: [[TetrisGameSquare]] {
         var board = tetrisGameModel.gameBoard.map { $0.map(convertToSquare) }
         
+        if let shadow = tetrisGameModel.shadow {
+            for blockLocation in shadow.blocks {
+                let boardColumn = blockLocation.column + shadow.origin.column
+                let boardRow = blockLocation.row + shadow.origin.row
+                board[boardColumn][boardRow] = TetrisGameSquare(color: getShadowColor(blockType: shadow.blockType))
+            }
+        }
+        
         if let tetromino = tetrisGameModel.tetromino {
             for blockLocation in tetromino.blocks {
                 let boardColumn = blockLocation.column + tetromino.origin.column
@@ -35,10 +46,9 @@ final class TetrisGameViewModel: ObservableObject {
                 board[boardColumn][boardRow] = TetrisGameSquare(color: getColor(blockType: tetromino.blockType))
             }
         }
+        
         return board
     }
-    
-    var anyCancellable: AnyCancellable?
     
     //
     // MARK: - Initializers
@@ -51,16 +61,11 @@ final class TetrisGameViewModel: ObservableObject {
     }
     
     //
-    // MARK: - Methods
+    // MARK: - Public methods
     //
     
     func squareClicked(row: Int, column: Int) {
         tetrisGameModel.blockClicked(row: row, column: column)
-    }
-    
-    func convertToSquare(block: TetrisGameBlock?) -> TetrisGameSquare {
-        let squareColor = getColor(blockType: block?.blockType)
-        return TetrisGameSquare(color: squareColor)
     }
     
     func getColor(blockType: BlockType?) -> Color {
@@ -75,9 +80,75 @@ final class TetrisGameViewModel: ObservableObject {
         case .none: return .tetrisBlack
         }
     }
-}
-
-// TODO: JR Move
-struct TetrisGameSquare {
-    var color: Color
+    
+    func getShadowColor(blockType: BlockType?) -> Color {
+        switch blockType {
+        case .i: return .tetrisLightBlueShadow
+        case .j: return .tetrisDarkBlueShadow
+        case .l: return .tetrisOrangeShadow
+        case .o: return .tetrisYellowShadow
+        case .s: return .tetrisGreenShadow
+        case .t: return .tetrisPurpleShadow
+        case .z: return .tetrisRedShadow
+        case .none: return .tetrisBlack
+        }
+    }
+    
+    func getMoveGesture() -> some Gesture {
+        return DragGesture()
+        .onChanged(onMoveChanged(value:))
+        .onEnded(onMoveEnded(_:))
+    }
+    
+    //
+    // MARK: - Private methods
+    //
+    
+    private func convertToSquare(block: TetrisGameBlock?) -> TetrisGameSquare {
+        let squareColor = getColor(blockType: block?.blockType)
+        return TetrisGameSquare(color: squareColor)
+    }
+    
+    private func onMoveChanged(value: DragGesture.Value) {
+        guard let start = lastMoveLocation else {
+            lastMoveLocation = value.location
+            return
+        }
+        
+        let xDiff = value.location.x - start.x
+        
+        if xDiff > 10 {
+            debugPrint("Moving right")
+            let _ = tetrisGameModel.moveTetrominoRight()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        if xDiff < -10 {
+            debugPrint("Moving left")
+            let _ = tetrisGameModel.moveTetrominoLeft()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        let yDiff = value.location.y - start.y
+        
+        if yDiff > 10 {
+            debugPrint("Moving down")
+            let _ = tetrisGameModel.moveTetrominoDown()
+            lastMoveLocation = value.location
+            return
+        }
+        
+        if yDiff < -10 {
+            debugPrint("Dropping")
+            tetrisGameModel.dropTetromino()
+            lastMoveLocation = value.location
+            return
+        }
+    }
+    
+    private func onMoveEnded(_: DragGesture.Value) {
+        lastMoveLocation = nil
+    }
 }
