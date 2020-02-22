@@ -43,6 +43,12 @@ struct Tetromino {
         return Tetromino(origin: newOrigin, blockType: blockType)
     }
     
+    func rotate() -> Tetromino {
+        // TODO: JR
+        debugPrint("ROTATE TETROMINO CALLED")
+        return self
+    }
+    
     //
     // MARK: - Private methods
     //

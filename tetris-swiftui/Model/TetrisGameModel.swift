@@ -55,10 +55,18 @@ final class TetrisGameModel: ObservableObject {
     //
     
     func blockClicked(row: Int, column: Int) {
+        rotateTetromino()
+        return
+            // TODO: JR
         debugPrint("Column: \(column), Row: \(row)")
         if gameBoard[column][row] == nil {
             gameBoard[column][row] = TetrisGameBlock(blockType: BlockType.allCases.randomElement()!)
         }
+    }
+    
+    // TODO: JR move method
+    private func rotateTetromino() {
+        rotateCurrentTetromino()
     }
     
     func moveTetrominoDown() -> Bool {
@@ -128,6 +136,14 @@ final class TetrisGameModel: ObservableObject {
             return true
         }
         return false
+    }
+    
+    private func rotateCurrentTetromino() {
+        guard let currentTetromino = tetromino else { return }
+        let newTetromino = currentTetromino.rotate()
+        if isValidTetromino(testTetromino: newTetromino) {
+            tetromino = newTetromino
+        }
     }
     
     private func isValidTetromino(testTetromino: Tetromino) -> Bool {
